@@ -1,0 +1,122 @@
+@import "functions";
+@import "variables", "mixins";
+
+// Import examples
+// @import url();
+// @import "http://";
+// @import "filename.css";
+// @import "style-screen" screen;
+
+//Global
+@include fancy-links;
+@include apply-to-ie-6 {
+    @include large-screens{
+        font-size: 125%;
+    }
+}
+@include google-font("Allegreya+Sans");
+@include google-font("Titillium+Web");
+
+.warning-button {
+    @include warning;
+    @include box(10px, none);
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+body {
+    font-family: $text-font;
+    color: $text-color;
+    font-size: em(18px);
+
+    @include large-screens {
+        font-size: 125%;
+        
+    }
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: $headline-font;
+}
+
+h1 {
+    @include large-text;
+}
+
+p {
+    font-family: $text-font;
+}
+
+a {
+    color: $link-color;
+
+    &:hover{
+        color: darken($link-color, 15%);
+    }
+}
+
+#header {
+    @include box-shadow(2px 0px 4px #999, 1px 1px 6px $secondary-color);
+    height: $header-height;
+    background-color: $theme-color;
+
+    #main-menu {
+
+        li {
+            display: inline;
+        }
+
+        // Transition in navbar
+        a {
+            color: $menu-item-color;
+            border-bottom: 1px solid transparentize(#fefefe, 1);
+            transition: border-bottom 0.5s;
+            transition-timing-function: ease-in-out;
+            padding: 6px 8px;
+
+            &:hover{
+                border-bottom: 1px solid opacify(#fefefe, .5);
+            }
+        }
+    }
+
+    #logo {}
+}
+
+#main {
+    width: $content-width;
+    @include large-screens{
+        width: auto;
+        max-width: $content-width;
+    }
+    margin-left: auto;
+    margin-right: auto;
+
+    #content {
+        float: left;
+        // width: 6*$col;
+
+        li{
+            list-style-type: none;
+            padding: em(16px) em(20px);
+            border-bottom: 1px dashed #999;
+
+            &:hover{
+                background-color: #efefef;
+            }
+        }
+    }
+
+    #sidebar {
+        float: right;
+        // width: 2*$col;
+    }
+}
+
+#footer {
+    height: $footer-height;
+    background-color: $ternary-color;
+}
